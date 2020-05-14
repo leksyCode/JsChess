@@ -1,0 +1,291 @@
+﻿<!DOCTYPE html>
+<html lang="EN">
+<head>
+    <title>Chess Board HTML5</title>
+    <meta charset="UTF-8">
+    <style>
+        .box {
+            text-align: center;
+            background-color: #7bfff7;
+        }
+
+        .centered {
+            display: inline-block;
+            margin: 0;
+        }
+
+        .chess-board {
+            border-spacing: 0;
+            border-collapse: collapse;
+        }
+
+            .chess-board th {
+                padding: .5em;
+            }
+
+            .chess-board td, .cell{                 
+                width: 5em;
+                height: 5em;
+                text-align: center;
+                vertical-align: middle;
+            }
+
+            .chess-board .white {
+                background: #f0d9b5;
+            }
+
+            .chess-board .black {
+                background: #b58863;
+            }
+
+            img {
+            height: 70px;
+            }
+        
+}
+    </style>
+    <script src="~/js/game.js"></script>
+</head>
+<body>
+    <div class="box">
+        <div class="centered">
+
+            <table class="chess-board">
+                <tbody>
+                    <tr>
+
+                        <th>a</th>
+                        <th>b</th>
+                        <th>c</th>
+                        <th>d</th>
+                        <th>e</th>
+                        <th>f</th>
+                        <th>g</th>
+                        <th>h</th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td class="white" id="a8">
+                            <div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img src="~/tiles/bR.png" draggable="true" ondragstart="drag(event)" id="bR">
+                            </div>
+                        </td>
+                        <td class="black" id="b8">
+                            <div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img src="~/tiles/bN.png" draggable="true" ondragstart="drag(event)" id="bN">
+                            </div>
+                        </td>
+                        <td class="white" id="c8">
+                            <div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img src="~/tiles/bB.png" draggable="true" ondragstart="drag(event)" id="bB">
+                            </div>
+                        </td>
+                        <td class="black" id="d8">
+                            <div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img src="~/tiles/bQ.png" draggable="true" ondragstart="drag(event)" id="bQ">
+                            </div>
+                        </td>
+                        <td class="white" id="e8">
+                            <div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img src="~/tiles/bK.png" draggable="true" ondragstart="drag(event)" id="bK">
+                            </div>
+                        </td>
+                        <td class="black" id="f8">
+                            <div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img src="~/tiles/bB.png" draggable="true" ondragstart="drag(event)" id="bB2">
+                            </div>
+                        </td>
+                        <td class="white" id="g8">
+                            <div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img src="~/tiles/bN.png" draggable="true" ondragstart="drag(event)" id="bN2">
+                            </div>
+                        </td>
+                        <td class="black" id="h8">
+                            <div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img src="~/tiles/bR.png" draggable="true" ondragstart="drag(event)" id="bR2">
+                            </div>
+                        </td>
+                        <th>8</th>
+                    </tr>
+                    <tr>
+                        <td class="black" id="a7">
+                            <div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img src="~/tiles/bP.png" draggable="true" ondragstart="drag(event)" id="bP1">
+                            </div>
+                        </td>
+                        <td class="white" id="b7">
+                            <div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img src="~/tiles/bP.png" draggable="true" ondragstart="drag(event)" id="bP2">
+                            </div>
+                        </td>
+                        <td class="black" id="c7">
+                            <div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img src="~/tiles/bP.png" draggable="true" ondragstart="drag(event)" id="bP3">
+                            </div>
+                        </td>
+                        <td class="white" id="d7">
+                            <div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img src="~/tiles/bP.png" draggable="true" ondragstart="drag(event)" id="bP4">
+                            </div>
+                        </td>
+                        <td class="black" id="e7">
+                            <div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img src="~/tiles/bP.png" draggable="true" ondragstart="drag(event)" id="bP5">
+                            </div>
+                        </td>
+                        <td class="white" id="f7">
+                            <div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img src="~/tiles/bP.png" draggable="true" ondragstart="drag(event)" id="bP6">
+                            </div>
+                        </td>
+                        <td class="black" id="g7">
+                            <div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img src="~/tiles/bP.png" draggable="true" ondragstart="drag(event)" id="bP7">
+                            </div>
+                        </td>
+                        <td class="white" id="h7">
+                            <div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img src="~/tiles/bP.png" draggable="true" ondragstart="drag(event)" id="bP8">
+                            </div>
+                        </td>
+                        <th>7</th>
+                    </tr>
+                    <tr>
+                        <td class="white" id="a6"><div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
+                        <td class="black" id="b6"><div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
+                        <td class="white" id="c6"><div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
+                        <td class="black" id="d6"><div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
+                        <td class="white" id="e6"><div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
+                        <td class="black" id="f6"><div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
+                        <td class="white" id="g6"><div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
+                        <td class="black" id="h6"><div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
+                        <th>6</th>
+                    </tr>
+                    <tr>
+                        <td class="black" id="a5"><div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
+                        <td class="white" id="b5"><div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
+                        <td class="black" id="c5"><div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
+                        <td class="white" id="d5"><div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
+                        <td class="black" id="e5"><div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
+                        <td class="white" id="f5"><div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
+                        <td class="black" id="g5"><div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
+                        <td class="white" id="h5"><div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
+                        <th>5</th>
+                    </tr>
+                    <tr>
+                        <td class="white" id="a4"><div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
+                        <td class="black" id="b4"><div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
+                        <td class="white" id="c4"><div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
+                        <td class="black" id="d4"><div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
+                        <td class="white" id="e4"><div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
+                        <td class="black" id="f4"><div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
+                        <td class="white" id="g4"><div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
+                        <td class="black" id="h4"><div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
+                        <th>4</th>
+                    </tr>
+                    <tr>
+                        <td class="black" id="a3"><div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
+                        <td class="white" id="b3"><div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
+                        <td class="black" id="c3"><div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
+                        <td class="white" id="d3"><div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
+                        <td class="black" id="e3"><div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
+                        <td class="white" id="f3"><div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
+                        <td class="black" id="g3"><div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
+                        <td class="white" id="h3"><div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
+                        <th>3</th>
+                    </tr>
+                    <tr>
+                        <td class="white" id="a2">
+                            <div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img src="~/tiles/wP.png" draggable="true" ondragstart="drag(event)" id="wP1">
+                            </div>
+                        </td>
+                        <td class="black" id="b2">
+                            <div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img src="~/tiles/wP.png" draggable="true" ondragstart="drag(event)" id="wP2">
+                            </div>
+                        </td>
+                        <td class="white" id="c2">
+                            <div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img src="~/tiles/wP.png" draggable="true" ondragstart="drag(event)" id="wP3">
+                            </div>
+                        </td>
+                        <td class="black" id="d2">
+                            <div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img src="~/tiles/wP.png" draggable="true" ondragstart="drag(event)" id="wP4">
+                            </div>
+                        </td>
+                        <td class="white" id="e2">
+                            <div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img src="~/tiles/wP.png" draggable="true" ondragstart="drag(event)" id="wP5">
+                            </div>
+                        </td>
+                        <td class="black" id="f2">
+                            <div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img src="~/tiles/wP.png" draggable="true" ondragstart="drag(event)" id="wP6">
+                            </div>
+                        </td>
+                        <td class="white" id="g2">
+                            <div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img src="~/tiles/wP.png" draggable="true" ondragstart="drag(event)" id="wP7">
+                            </div>
+                        </td>
+                        <td class="black" id="h2">
+                            <div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img src="~/tiles/wP.png" draggable="true" ondragstart="drag(event)" id="wP8">
+                            </div>
+                        </td>
+                        <th>2</th>
+                    </tr>
+                    <tr>
+                        <td class="black" id="a1">
+                            <div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img src="~/tiles/wR.png" draggable="true" ondragstart="drag(event)" id="wR">
+                            </div>
+                        </td>
+                        <td class="white" id="b1">
+                            <div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img src="~/tiles/wN.png" draggable="true" ondragstart="drag(event)" id="wN">
+                            </div>
+                        </td>
+                        <td class="black" id="c1">
+                            <div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img src="~/tiles/wB.png" draggable="true" ondragstart="drag(event)" id="wB">
+                            </div>
+                        </td>
+                        <td class="white" id="d1">
+                            <div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img src="~/tiles/wk.png" draggable="true" ondragstart="drag(event)" id="wK">
+                            </div>
+                        </td>
+                        <td class="black" id="e1">
+                            <div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img src="~/tiles/wQ.png" draggable="true" ondragstart="drag(event)" id="wQ">
+                            </div>
+                        </td>
+                        <td class="white" id="f1">
+                            <div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img src="~/tiles/wB.png" draggable="true" ondragstart="drag(event)" id="wB2">
+                            </div>
+                        </td>
+                        <td class="black" id="g1">
+                            <div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img src="~/tiles/wN.png" draggable="true" ondragstart="drag(event)" id="wN2">
+                            </div>
+                        </td>
+                        <td class="white" id="h1">
+                            <div class="cell" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img src="~/tiles/wR.png" draggable="true" ondragstart="drag(event)" id="wR2">
+                            </div>
+                        </td>
+                        <th>1</th>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+   
+</body>
+</html>
