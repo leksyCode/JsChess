@@ -62,7 +62,7 @@ function pawnStep(ev, targetId, currentId) {
              // if it's first pawn step
             if (currentId.charAt(1) == '2' && Number(targetId.charAt(1)) > Number(currentId.charAt(1)) && Number(targetId.charAt(1)) <= Number(currentId.charAt(1)) + 2) {
                 // checks if trying to jump over figure
-                if (document.getElementById(currentId.charAt(0) + (Number(currentId.charAt(1) + 1))).firstElementChild.firstElementChild == null) {
+                if (document.getElementById(currentId.charAt(0) + (Number(currentId.charAt(1)) + 1)).firstElementChild.firstElementChild == null) {
                     ev.target.appendChild(document.getElementById(data));
                 }                
             }
