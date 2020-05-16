@@ -61,7 +61,10 @@ function pawnStep(ev, targetId, currentId) {
         if (data.charAt(0) == 'w') { // for white
              // if it's first pawn step
             if (currentId.charAt(1) == '2' && Number(targetId.charAt(1)) > Number(currentId.charAt(1)) && Number(targetId.charAt(1)) <= Number(currentId.charAt(1)) + 2) {
-                ev.target.appendChild(document.getElementById(data));
+                // checks if trying to jump over figure
+                if (document.getElementById(currentId.charAt(0) + (Number(currentId.charAt(1) + 1))).firstElementChild.firstElementChild == null) {
+                    ev.target.appendChild(document.getElementById(data));
+                }                
             }
             else if (Number(targetId.charAt(1)) == Number(currentId.charAt(1)) + 1) {
                 ev.target.appendChild(document.getElementById(data));
@@ -70,7 +73,10 @@ function pawnStep(ev, targetId, currentId) {
         else if (data.charAt(0) == 'b') { // for black
             // if it's first pawn step
             if (currentId.charAt(1) == '7' && Number(targetId.charAt(1)) < Number(currentId.charAt(1)) && Number(targetId.charAt(1)) >= Number(currentId.charAt(1)) - 2) {
-                ev.target.appendChild(document.getElementById(data));
+                // checks if trying to jump over figure
+                if (document.getElementById(currentId.charAt(0) + (Number(currentId.charAt(1) - 1))).firstElementChild.firstElementChild == null) {
+                    ev.target.appendChild(document.getElementById(data));
+                }  
             }
             else if (Number(targetId.charAt(1)) == Number(currentId.charAt(1)) - 1) {
                 ev.target.appendChild(document.getElementById(data));
