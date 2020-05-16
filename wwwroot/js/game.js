@@ -1,12 +1,12 @@
-﻿
+﻿var wScore = 0, bScore = 0;
+
 function allowDrop(ev) {
     ev.preventDefault();
     
 }
 
 function drag(ev) {
-    ev.dataTransfer.setData("text", ev.target.id);
-    
+    ev.dataTransfer.setData("text", ev.target.id);   
 }
 
 function drop(ev) {
@@ -19,6 +19,7 @@ function drop(ev) {
         if ((ev.target.id.charAt(0) == 'b' && data.charAt(0) == 'w') || (ev.target.id.charAt(0) == 'w' && data.charAt(0) == 'b')) { // only different sides can beat each other
             // attacking   
             attack(ev);    
+            setScore(ev);
             console.log(data + " has attacked: " + ev.target.id);
         }
     }
@@ -27,6 +28,11 @@ function drop(ev) {
         makeStep(ev);
         console.log(data + " has moved: " + document.getElementById(ev.target.parentNode.id).id);
     }    
+}
+
+function attack(ev) {
+    var data = ev.dataTransfer.getData("text");
+    ev.target.parentNode.replaceChild(document.getElementById(data), document.getElementById(ev.target.id));
 }
 
 
@@ -44,11 +50,6 @@ function makeStep(ev) {
     else {
         ev.target.appendChild(document.getElementById(data));
     }
-}
-
-function attack(ev) {
-    var data = ev.dataTransfer.getData("text");
-    ev.target.parentNode.replaceChild(document.getElementById(data), document.getElementById(ev.target.id));
 }
 
 
@@ -150,6 +151,38 @@ function checkVert(startX, startY, destX, destY) {
                 return true;
             }
         }
+    }   
+}
+
+function setScore(ev) {
+    var target = ev.target.id;
+    var score = 0;
+
+    if (target.charAt(1) == 'P') {
+        score = 1;
     }
-   
+    else if (target.charAt(1) == 'R') {
+        score = 5;
+    }
+    else if (target.charAt(1) == 'N') {
+        score = 3;
+    }
+    else if (target.charAt(1) == 'B') {
+        score = 3;
+    }
+    else if (target.charAt(1) == 'Q') {
+        score = 9;
+    }
+    else if (target.charAt(1) == 'K') {
+        score = 9999;
+    }
+
+    if (target.charAt(0) == 'b') {
+        wScore += score;
+        document.getElementById("wscore").firstElementChild.textContent = wScore;
+    }
+    else if (target.charAt(0) == 'w') {
+        bScore += score;
+        document.getElementById("bscore").firstElementChild.textContent = bScore;
+    }    
 }

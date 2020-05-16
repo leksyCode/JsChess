@@ -38,6 +38,16 @@
                 background: #b58863;
             }
 
+            #wscore {
+               position:absolute;
+               left: 30px;
+            }
+
+            #bscore {
+               position:absolute;
+               right: 50px;
+            }
+
         img {
             height: 70px;
         }
@@ -46,6 +56,14 @@
     <script src="~/js/game.js"></script>
 </head>
 <body>
+    <div id="wscore">
+        White score: <p></p>
+    </div>
+
+    <div id="bscore">
+        Black score: <p></p>
+    </div>
+
     <div class="box">
         <div class="centered">
 
@@ -285,6 +303,6 @@
         </div>
     </div>
 
-   
+
 </body>
 </html>
