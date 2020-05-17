@@ -53,8 +53,8 @@ function makeStep(ev) {
     else if (data.charAt(1) == 'B') {
         bishopStep(ev, targetId, currentId);
     }
-    else {
-        ev.target.appendChild(document.getElementById(data));
+    else if (data.charAt(1) == 'Q') {
+        qweenStep(ev, targetId, currentId);
     }
 }
 
@@ -95,7 +95,7 @@ function pawnStep(ev, targetId, currentId) {
 function rookStep(ev, targetId, currentId) {
     var data = ev.dataTransfer.getData("text");
 
-    if (targetId.charAt(0) == currentId.charAt(0) || targetId.charAt(1) == currentId.charAt(1)) { // if targer in the same vertical and gorizontal coordinate
+    if (targetId.charAt(0) == currentId.charAt(0) || targetId.charAt(1) == currentId.charAt(1)) { // if targer in the same vertical or gorizontal coordinate
         // Checks if there is another figure in the path
         if (checkLinearPath(currentId.charAt(0), Number(currentId.charAt(1)), targetId.charAt(0), Number(targetId.charAt(1)))) {
             ev.target.appendChild(document.getElementById(data));
@@ -111,12 +111,26 @@ function bishopStep(ev, targetId, currentId) {
     }
 }
 
+function qweenStep(ev, targetId, currentId) {
+    var data = ev.dataTransfer.getData("text");
+
+    if (targetId.charAt(0) == currentId.charAt(0) || targetId.charAt(1) == currentId.charAt(1)) { // if targer in the same vertical or gorizontal coordinate
+        // Checks if there is another figure in the path
+        if (checkLinearPath(currentId.charAt(0), Number(currentId.charAt(1)), targetId.charAt(0), Number(targetId.charAt(1)))) {
+            ev.target.appendChild(document.getElementById(data));
+        }
+    }       
+    else if (checkDiagonalPath(currentId.charAt(0), Number(currentId.charAt(1)), targetId.charAt(0), Number(targetId.charAt(1)))) {
+        ev.target.appendChild(document.getElementById(data));
+    }
+}
+
 function knightStep(ev, targetId, currentId) {
     var data = ev.dataTransfer.getData("text");
     // checking possibility to step into this cell
     if (currentId.charAt(0) == String.fromCharCode(targetId.charCodeAt(0) + 1)  || currentId.charAt(0) == String.fromCharCode(targetId.charCodeAt(0) - 1)) {
         if (Number(currentId.charAt(1)) == Number(targetId.charAt(1)) + 2 || Number(currentId.charAt(1)) == Number(targetId.charAt(1)) - 2) {
-            ev.target.appendChild(document.getElementById(data));
+            ev.target.appendChild(document.getElementById(data)); 
         }        
     }
     else if (currentId.charAt(0) == String.fromCharCode(targetId.charCodeAt(0) + 2) || currentId.charAt(0) == String.fromCharCode(targetId.charCodeAt(0) - 2)) {
@@ -125,6 +139,7 @@ function knightStep(ev, targetId, currentId) {
         }  
     }
 }
+
 
 function checkLinearPath(startX, startY, destX, destY) {     
     if (startY < destY) { // checking up
