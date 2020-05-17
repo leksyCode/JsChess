@@ -56,6 +56,9 @@ function makeStep(ev) {
     else if (data.charAt(1) == 'Q') {
         qweenStep(ev, targetId, currentId);
     }
+    else if (data.charAt(1) == 'K') {
+        kingStep(ev, targetId, currentId);
+    }
 }
 
 
@@ -138,6 +141,36 @@ function knightStep(ev, targetId, currentId) {
             ev.target.appendChild(document.getElementById(data));
         }  
     }
+}
+
+function kingStep(ev, targetId, currentId) {
+    var data = ev.dataTransfer.getData("text");
+
+     if (Number(targetId.charAt(1)) == Number(currentId.charAt(1)) + 1) {
+        ev.target.appendChild(document.getElementById(data));
+     }
+     else if (Number(targetId.charAt(1)) == Number(currentId.charAt(1)) - 1) {
+         ev.target.appendChild(document.getElementById(data));
+     }
+     else if (String.fromCharCode(targetId.charCodeAt(0) + 1) == currentId.charAt(0)) {
+         ev.target.appendChild(document.getElementById(data));
+     }
+     else if (String.fromCharCode(targetId.charCodeAt(0) - 1) == currentId.charAt(0)) {
+         ev.target.appendChild(document.getElementById(data));
+    }
+     else if (Number(targetId.charAt(1)) == Number(currentId.charAt(1)) + 1 && String.fromCharCode(targetId.charCodeAt(0) + 1) == currentId.charAt(0)) {
+        ev.target.appendChild(document.getElementById(data));
+    }
+     else if (Number(targetId.charAt(1)) == Number(currentId.charAt(1)) - 1 && String.fromCharCode(targetId.charCodeAt(0) + 1) == currentId.charAt(0)) {
+        ev.target.appendChild(document.getElementById(data));
+    }
+     else if (Number(targetId.charAt(1)) == Number(currentId.charAt(1)) + 1 && String.fromCharCode(targetId.charCodeAt(0) - 1) == currentId.charAt(0)) {
+         ev.target.appendChild(document.getElementById(data));
+     }
+     else if (Number(targetId.charAt(1)) == Number(currentId.charAt(1)) - 1 && String.fromCharCode(targetId.charCodeAt(0) - 1) == currentId.charAt(0)) {
+         ev.target.appendChild(document.getElementById(data));
+     }
+
 }
 
 
