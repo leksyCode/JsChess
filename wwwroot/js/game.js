@@ -50,6 +50,9 @@ function makeStep(ev) {
     else if (data.charAt(1) == 'N') {
         knightStep(ev, targetId, currentId);
     }
+    else if (data.charAt(1) == 'B') {
+        bishopStep(ev, targetId, currentId);
+    }
     else {
         ev.target.appendChild(document.getElementById(data));
     }
@@ -94,10 +97,18 @@ function rookStep(ev, targetId, currentId) {
 
     if (targetId.charAt(0) == currentId.charAt(0) || targetId.charAt(1) == currentId.charAt(1)) { // if targer in the same vertical and gorizontal coordinate
         // Checks if there is another figure in the path
-        if (checkVert(currentId.charAt(0), Number(currentId.charAt(1)), targetId.charAt(0), Number(targetId.charAt(1)))) {
+        if (checkLinearPath(currentId.charAt(0), Number(currentId.charAt(1)), targetId.charAt(0), Number(targetId.charAt(1)))) {
             ev.target.appendChild(document.getElementById(data));
         }
     }      
+}
+
+function bishopStep(ev, targetId, currentId) {
+    var data = ev.dataTransfer.getData("text");
+
+    if (checkDiagonalPath(currentId.charAt(0), Number(currentId.charAt(1)), targetId.charAt(0), Number(targetId.charAt(1)))) {    
+        ev.target.appendChild(document.getElementById(data));
+    }
 }
 
 function knightStep(ev, targetId, currentId) {
@@ -115,7 +126,7 @@ function knightStep(ev, targetId, currentId) {
     }
 }
 
-function checkVert(startX, startY, destX, destY) {     
+function checkLinearPath(startX, startY, destX, destY) {     
     if (startY < destY) { // checking up
         while (startY != destY) {
             if (document.getElementById(startX + (startY + 1)).firstElementChild.firstElementChild!= null) {
@@ -172,6 +183,71 @@ function checkVert(startX, startY, destX, destY) {
     }   
 }
 
+function checkDiagonalPath(startX, startY, destX, destY) {
+    if (startY < destY && startX.charCodeAt(0) < destX.charCodeAt(0)) { // checking up-rigth diagonal
+        while (startY != destY && startX != destX) {
+            var nextVal = String.fromCharCode(startX.charCodeAt(0) + 1); // set next ASCII value
+            if (document.getElementById(nextVal + (startY + 1)).firstElementChild.firstElementChild != null) {
+                return false;
+            }
+            else {
+                startX = nextVal;
+                startY++;
+            }
+            if (startX == destX) {
+                return true;
+            }
+        }
+    }
+    if (startY < destY && startX.charCodeAt(0) > destX.charCodeAt(0)) { // checking up-left diagonal
+        while (startY != destY && startX != destX) {
+            var nextVal = String.fromCharCode(startX.charCodeAt(0) - 1); // set next ASCII value
+            if (document.getElementById(nextVal + (startY + 1)).firstElementChild.firstElementChild != null) {
+                return false;
+            }
+            else {
+                startX = nextVal;
+                startY++;
+            }
+            if (startX == destX) {
+                return true;
+            }
+        }
+    }
+    if (startY > destY && startX.charCodeAt(0) > destX.charCodeAt(0)) { // checking down-left diagonal
+        while (startY != destY && startX != destX) {
+            var nextVal = String.fromCharCode(startX.charCodeAt(0) - 1); // set next ASCII value
+            if (document.getElementById(nextVal + (startY - 1)).firstElementChild.firstElementChild != null) {
+                return false;
+            }
+            else {
+                startX = nextVal;
+                startY--;
+            }
+            if (startX == destX) {
+                return true;
+            }
+        }
+    }
+    if (startY > destY && startX.charCodeAt(0) < destX.charCodeAt(0)) { // checking down-right diagonal
+        while (startY != destY && startX != destX) {
+            var nextVal = String.fromCharCode(startX.charCodeAt(0) + 1); // set next ASCII value
+            if (document.getElementById(nextVal + (startY - 1)).firstElementChild.firstElementChild != null) {
+                return false;
+            }
+            else {
+                startX = nextVal;
+                startY--;
+            }
+            if (startX == destX) {
+                return true;
+            }
+        }
+    }
+}
+
+
+// Score func
 function setScore(ev) {
     var target = ev.target.id;
     var score = 0;
