@@ -47,6 +47,9 @@ function makeStep(ev) {
     else if (data.charAt(1) == 'R') {
         rookStep(ev, targetId, currentId);
     }
+    else if (data.charAt(1) == 'N') {
+        knightStep(ev, targetId, currentId);
+    }
     else {
         ev.target.appendChild(document.getElementById(data));
     }
@@ -95,6 +98,21 @@ function rookStep(ev, targetId, currentId) {
             ev.target.appendChild(document.getElementById(data));
         }
     }      
+}
+
+function knightStep(ev, targetId, currentId) {
+    var data = ev.dataTransfer.getData("text");
+    // checking possibility to step into this cell
+    if (currentId.charAt(0) == String.fromCharCode(targetId.charCodeAt(0) + 1)  || currentId.charAt(0) == String.fromCharCode(targetId.charCodeAt(0) - 1)) {
+        if (Number(currentId.charAt(1)) == Number(targetId.charAt(1)) + 2 || Number(currentId.charAt(1)) == Number(targetId.charAt(1)) - 2) {
+            ev.target.appendChild(document.getElementById(data));
+        }        
+    }
+    else if (currentId.charAt(0) == String.fromCharCode(targetId.charCodeAt(0) + 2) || currentId.charAt(0) == String.fromCharCode(targetId.charCodeAt(0) - 2)) {
+        if (Number(currentId.charAt(1)) == Number(targetId.charAt(1)) + 1 || Number(currentId.charAt(1)) == Number(targetId.charAt(1)) - 1) {
+            ev.target.appendChild(document.getElementById(data));
+        }  
+    }
 }
 
 function checkVert(startX, startY, destX, destY) {     
@@ -158,6 +176,7 @@ function setScore(ev) {
     var target = ev.target.id;
     var score = 0;
 
+    
     if (target.charAt(1) == 'P') {
         score = 1;
     }
